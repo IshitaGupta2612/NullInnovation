@@ -52,7 +52,8 @@ def writer(file,fileType):
         dbPath=input('Enter the Database Path where the Output is to be stored : ')
         fileName=dbPath+'/'+fileName
         filePath=input('Enter the Table Name : ')
-
+        
+        file=pd.DataFrame.from_dict(file,orient ='index')
         database='sqlite:///'+fileName+'.db'
         sqlEng = create_engine(database).connect()
         file.to_sql(filePath, sqlEng)
